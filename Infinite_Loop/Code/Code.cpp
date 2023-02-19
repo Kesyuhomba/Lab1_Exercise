@@ -2,45 +2,72 @@
 //
 
 #include <iostream>
+#include <sstream>
+#include <string>
+
+
+
+
+
 using namespace std;
+
+//check to see if value is a number//
+bool isNumber(string s)
+{
+std::stringstream ss(s);
+float x;
+return (ss >> x) && ss.eof();
+  }
+
 
 int main()
 {
 	int choice = 0;
 
 	string name = "";
-	string age = "";
+  // age is always a numerical value //
+	int age = 0;
 	string occup = "";
 
 	while (choice != -1)
 	{
-		cout << "-1: Exit\n";
+    // reset the value
+    string input = "";
+    choice = 0;
+
+    
+		cout << "-1: Continue\n";
 		cout << "1: Enter Name\n";
 		cout << "2: Enter Age\n";
 		cout << "3: Enter Occupation\n";
 		cin >> choice;
-
-		/*if (choice == -1)
-			break;*/
-
+//no need for this to be a comment//
+		if (choice == -1)
+      break;
+    // read input//
+	   getline(cin, input);	
+// check to see if it is a numerical value//
+    if (isNumber(input));
+    
 		switch (choice)
 		{
 		case 1:
-			cout << "What is your Name: ";
-			cin >> name;
+			cout << "What is your Name: \n";
+      //to add an additional line//
+      getline(cin, name);
 			break;
 		case 2:
-			cout << "What is your Age? ";
+			cout << "What is your Age? \n";
 			cin >> age;
 			break;
 		case 3:
-			cout << "What is your Occupation? ";
-			cin >> occup;
+			cout << "What is your Occupation? \n";
+      getline(cin, occup);
 			break;
 		default:
 			// Assume Invalid Menu Choice
 			cout << "Sorry that choice is not valid!";
-			break;
+			continue;
 		}
 	}
 
@@ -51,6 +78,7 @@ int main()
 
 	return 0;
 }
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
